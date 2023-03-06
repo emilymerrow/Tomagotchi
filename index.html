@@ -7,9 +7,39 @@
     <title>Document</title>
     <script src="js/app.js"></script>
     <link href="style.css" rel="stylesheet"/>
-    
+    <title>Tomagotchi Game</title>
 </head>
 <body>
-    
+    <h1>My Tomagotchi</h1>
+    <h3 class="tomagotchi-name">Your pet's name:</h3>
+    <input type="pet-name" name="pet-name" placeholder="Pet Name">
+    <div id="pet-picture">
+        <!-- Tomagotchi image should be displayed here -->
+    <div class="metrics">
+        <h2>metrics</h2>
+        <p>Hunger: <span id="hunger">5</span>/10</p>
+        <p>Sleepiness: <span id="Sleepiness">5</span>/10</p>
+        <p>Boredom: <span id="boredom">5</span>/10</p>
+        <p>Age: <span id='age'>1</span></p>
+    </div>
+    <!-- 
+    <div class="actions">
+        <h2>Actions</h2>
+        <button id="feed">Feed</button>
+        <button id="sleep"></button>
+        <button id="play"></button>
+    </div>
+     -->
+    <div is="tomagotchi-buttons">
+        <button onclick="feed()">Feed</button> 
+        <button onclick="sleep()">Sleep</button>
+        <button onclick="play()">Play</button>
+    </div>
+
+
+
+    <script>
+        //this is where the JavaScript goes to interact with the Tomagotchi
+    </script>
 </body>
 </html>
