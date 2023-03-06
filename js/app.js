@@ -47,6 +47,9 @@ incrementAge() {
     this.age += 1; //increases by 1
     console.log(`${this.name} is now ${this.age} days old.`);
 }
+if(pet.hunger >=10 || pet.sleepiness >= 10 || pet.boredom >= 10 { //checks if T's hunger, sleep, OR boredom >=10
+    document.getElementById("message").textContent = `${pet.name} has died!` //logs dead pet
+}
 
 let petName = prompt("Enter your Tomagotchi's name:");
 let pet = new Tomagotchi(petName);
