@@ -4,25 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script src="js/app.js"></script>
     <link href="style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Tomagotchi Game</title>
 </head>
 <body>
-    <h1>My Tomagotchi</h1>
-    <h3 class="tomagotchi-name">Your pet's name:</h3>
-    <input type="pet-name" name="pet-name" placeholder="Pet Name">
-    <div id="pet-picture">
-        <!-- Tomagotchi image should be displayed here -->
-    <div class="metrics">
-        <h2>metrics</h2>
-        <p>Hunger: <span id="hunger">5</span>/10</p>
-        <p>Sleepiness: <span id="Sleepiness">5</span>/10</p>
-        <p>Boredom: <span id="boredom">5</span>/10</p>
-        <p>Age: <span id='age'>1</span></p>
-        <p id="message"></p>
-    </div>
+    <div id="wrapper-main">
+        <div id="outer-case">
+          <div class="info character-details">
+            <p id="character-name"> </p>
+            <p id="character-age"> </p>
+          </div>
+          <div id="pixel-screen">
+          </div>
+          <div class="info info-wrapper">
+            <div class="info-item">
+              <span class="material-symbols-outlined">restaurant</span>
+              <span id="hunger-stat" class="current-stat"></span>
+            </div>
+            <div class="info-item">
+              <span class="material-symbols-outlined">bedtime</span>
+              <span id="sleepiness-stat" class="current-stat"></span>
+            </div>
+            <div class="info-item">
+              <span class="material-symbols-outlined">sports_esports</span>
+              <span id="boredom-stat" class="current-stat"></span>
+            </div>
+          </div>
     <!-- 
     <div class="actions">
         <h2>Actions</h2>

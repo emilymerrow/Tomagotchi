@@ -1,48 +1,72 @@
 
 
-class Tomagotchi {  //T class that creates a T object with 6 properties
+let character;
+let statsIncreaseInterval = 5000;
+let hunger = 1;
+let sleepiness = 1;
+let boredom = 1;
+let age = 0;
+let isDead = false;
+
+
+class Tomagotchi {
+
     constructor(name) {
-        this.name = name;
-        this.age = 0; // measured in days
-        this.hunger = 5; //1-10 scale, 10 hungriest
-        this.happiness = 5;
-        this.energy = 5;
-        this.isSleeping = false;
+      this.name = name;
     }
-}
-play() { //method in T class that checks if T has enough energy to play && if happiness <10
-    if(this.energy >= 2 && this.happiness < 10) {
-        this.happiness += 1;  
-        this.energy -= 2;  //if both=true, T happines +1, energy -2 
-        console.log(`${this.name} is happier now.`);
-    } else if(this.energy < 2) {  //if not enough energy to play
-        console.log(`${this.name} is too tired.`);
-    } else { 
-        console.log(`${this.name} doesn't feel like playing now.`); //T is happy already
+  
+  }
+  
+  let name = prompt("Please enter your pet's name.");
+  character = new Tomagotchi(name);
+  
+  document.getElementById("character-name").innerHTML = character.name;
+  document.getElementById("character-age").innerHTML = `(Age:${age})`;
+  
+  
+  const displayUpdatedStats = () => {
+    if(isDead) {
+      return;
     }
+    document.getElementById("hunger-stat").innerHTML = `(${hunger})`;
+    document.getElementById("sleepiness-stat").innerHTML = `(${sleepiness})`;
+    document.getElementById("boredom-stat").innerHTML = `(${boredom})`;
+    if (hunger === 10 || sleepiness === 10 || boredom === 10) {
+      isDead = true;
+      drawDead();
+    }
+  }
+  
+  const decreaseHunger = () => {
+    if (hunger >= 2) {
+      hunger --;
+      displayUpdatedStats();
+    }
+  }
+  
+  const decreaseSleepiness = () => {
+    if (sleepiness >= 2) {
+      sleepiness --;
+      displayUpdatedStats();
+    }
+  }
+  
+  const decreaseBoredom = () => {
+    if (boredom >= 2) {
+      boredom --;
+      displayUpdatedStats();
+    }
+  }
+  
+  const animateCharacter = () => {
+    draw(Math.floor(Math.random() * 2));
+  }
+  
 
-}
 
-sleep() {
-   if(!this.isSleeping) { //if T. is not sleeping
-        this.isSleeping = true; //then this is true
-        console.log(`${this.name} is now sleeping.`);
-      setTimeout(() => {  // funct. is called 
-        this.isSleeping = false;   //Sets the isSleeping back to 'false' and logs msg.
-        console.log(`${this.name} woke up from a nap.`);
-    }, 5000);  //how much time to wait before exec the funct (5,000 millisecons = 5sec)
-   } else {
-       console.log(`{$this.name} is already sleeping.`); //if T is sleeping, logs this msg.
-   }
-}
-feed () { //method that simulates T eating
-    if(this.hunger < 10) { //checks if T hungry or not
-        this.hunger += 1;
-        console.log(`${this.name} is less hungry now.`);
-   } else {
-        console.log(`${this.name} is not hungry.`); //if hunger !<10 , log this
-    }
-}
+
+
+
 incrementAge() {
     this.age += 1; //increases by 1
     console.log(`${this.name} is now ${this.age} days old.`);
@@ -57,7 +81,9 @@ let pet = new Tomagotchi(petName);
 
 /* I defined a Tamagotchi class with constructor that set the initial values 
 for the pet's name, hunger, happiness, energy, age, and sleeping state. 
-I also defined methods for feeding, playing, sleeping, and aging up the pet. 
+//the startig values are 5 to give the player time to play before it dies
+I also defined methods for feeding, playing, sleeping, and aging up the pet,
+and function for when the pet dies if not cared for properly
 The methods changes the pet's hunger, happiness, energy, and sleep  
 based on certain conditions. */
 
