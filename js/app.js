@@ -48,14 +48,14 @@ let characterTemplate = {
     color: 'white',
   }
 
-let character;
+let character;sh 
 let statsIncreaseInterval = 5000;
 let hunger = 1;
 let sleepiness = 1;
 let boredom = 1;
 let age = 0;
 let isDead = false;
-
+//set the size of the T pixel art
 document.getElementById('pixel-screen').style.width = `calc(${(0.825 * config.width)}rem + ${(config.height * 3)}px)`;
 document.getElementById('pixel-screen').style.height = `calc(${(0.825 * config.height)}rem + ${(config.width * 3)}px)`;
 
