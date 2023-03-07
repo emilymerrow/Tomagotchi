@@ -1,0 +1,45 @@
+body {
+    background: rgb(15 19 22);
+    color: white;
+    padding: 2rem;
+    f font-family: Inter, sans-serif;
+  }
+  
+  #pixel-screen {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    overflow: hidden;
+    border-radius: 4px;
+    padding: 2px 0 2px 2px;
+  }
+  
+  #pixel-screen .pixel {
+    width: 0.825rem;
+    margin: 0 3px 3px 0;
+    height: 0.825rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    border-radius: 3px;
+    background: #333333;
+  }
+
+  #wrapper-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #outer-case {
+    width: 600px;
+    height: 700px;
+  
+    background: rgba(217, 217, 217, 0.3);
+    clip-path: ellipse(300px 350px);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
