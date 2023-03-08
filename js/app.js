@@ -39,17 +39,18 @@ let characterTemplate = {
       { x: 9, y: 11, color: '#fefcfc' },
       { x: 12, y: 11, color: '#fefcfc' },
     ],
-    2: [
-        { x: 9, y: 9, color: '#fefcfc' },
-        { x: 10, y: 9, color: '#fefcfc' },
-        { x: 11, y: 9, color: '#fefcfc' },
-        { x: 12, y: 9, color: '#fefcfc' },
-        { x: 13, y: 10, color: '#fefcfc' },
+   
+      2: [
+        { x: 9, y: 8, color: '#fefcfc' },
+        { x: 10, y: 8, color: '#fefcfc' },
+        { x: 11, y: 8, color: '#fefcfc' },
+        { x: 12, y: 8, color: '#fefcfc' },
+        { x: 13, y: 9, color: '#fefcfc' },
+        { x: 14, y: 10, color: '#fefcfc' },
         { x: 14, y: 11, color: '#fefcfc' },
-        { x: 14, y: 12, color: '#fefcfc' },
-        { x: 13, y: 13, color: '#fefcfc' },
+        { x: 13, y: 12, color: '#fefcfc' },
+        { x: 12, y: 13, color: '#fefcfc' },
         { x: 11, y: 14, color: '#fefcfc' },
-        { x: 12, y: 14, color: '#fefcfc' },
         { x: 10, y: 14, color: '#fefcfc' },
         { x: 9, y: 14, color: '#fefcfc' },
         { x: 8, y: 13, color: '#fefcfc' },
@@ -131,14 +132,28 @@ class Tomagotchi {  //T class with a property (name)
     }
   
   }
-  
-  let name = prompt("Please enter your pet's name."); //sets up the initial state of the T game 
-  character = new Tomagotchi(name);                  //and creates a new T object with user's pet name
-  
-  document.getElementById("character-name").innerHTML = character.name; //updates the text content of the HTML elem. with the ID attibutes
-  document.getElementById("character-age").innerHTML = `(Age:${age})`;  // to show the name & age of the T the user created
-  
-  
+// Get the button that submits the name
+var submitNameBtn = document.getElementById("submit-name-btn");
+
+// When the user clicks the submit button, set the pet's name and close the modal
+submitNameBtn.onclick = function() {
+  const petName = document.getElementById("pet-name-input").value;
+  character = new Tomagotchi(petName);
+  document.getElementById("character-name").innerHTML = character.name;
+  document.getElementById("character-age").innerHTML = `(Age:${age})`;
+  modal.style.display = "none";
+}
+
+
+const modal = document.getElementById("myModal");
+const span = document.getElementsByClassName("close")[0];
+const petNameInput = document.getElementById("petNameInput");
+const petNameButton = document.getElementById("petNameButton");
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
   const displayUpdatedStats = () => { //this funct. updates the HTML content of hunger, sleepiness, boredom
     if(isDead) {                     //
       return;
@@ -184,7 +199,8 @@ class Tomagotchi {  //T class with a property (name)
     document.getElementById("btnHunger").addEventListener("click", decreaseHunger);
     document.getElementById("btnSleepiness").addEventListener("click", decreaseSleepiness);
     document.getElementById("btnBoredom").addEventListener("click", decreaseBoredom);
-// Increases stats
+
+ // Increases stats
 setInterval(() => {
     if (!isDead) {
       hunger ++;
@@ -194,15 +210,15 @@ setInterval(() => {
     }
   }, statsIncreaseInterval);
 
-  // Increases age
-  setInterval(() => {
+   setInterval(() => {
     if (!isDead) {
-      if (age < 1) {
+      if (age < 2) {
         age ++;
+        draw(); // call draw function to update the pixel art display
       }
       document.getElementById("character-age").innerHTML = `(Age:${age})`;
     }
-   }, 10000);
+  }, 10000);
 
    setInterval(() => {
     if (!isDead) {
@@ -210,11 +226,13 @@ setInterval(() => {
     }
   }, 1500);
 }
+
+
 initializeGame();
 
 
 
-/* I defined a Tamagotchi class with constructor that set the initial values 
+/* I defined a Tamagotchi class with constructor that sets the initial values 
 for the pet's name, hunger, happiness, energy, age, and sleeping state. 
 //the startig values are 5 to give the player time to play before it dies
 I also defined methods for feeding, playing, sleeping, and aging up the pet,
@@ -222,9 +240,6 @@ and function for when the pet dies if not cared for properly
 The methods changes the pet's hunger, happiness, energy, and sleep  
 based on certain conditions. */
 
-//properties of the t class
-//add a name to the prop.
-//global var "is light on"
-//create the class and set the properties inside of it
+
 
 
