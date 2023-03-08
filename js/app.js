@@ -140,19 +140,15 @@ submitNameBtn.onclick = function() {
   const petName = document.getElementById("pet-name-input").value;
   character = new Tomagotchi(petName);
   document.getElementById("character-name").innerHTML = character.name;
-  document.getElementById("character-age").innerHTML = `(Age:${age})`;
+  document.getElementById("character-age").innerHTML = `( Age: ${age})`;
   modal.style.display = "none";
+
+initializeGame(); //start the game only when modal is closed
 }
-
-
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 const petNameInput = document.getElementById("petNameInput");
 const petNameButton = document.getElementById("petNameButton");
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
 
   const displayUpdatedStats = () => { //this funct. updates the HTML content of hunger, sleepiness, boredom
     if(isDead) {                     //
@@ -216,10 +212,11 @@ setInterval(() => {
         age ++;
         draw(); // call draw function to update the pixel art display
       }
-      document.getElementById("character-age").innerHTML = `(Age:${age})`;
+      document.getElementById("character-age").innerHTML = ` ( Age: ${age} )`;
     }
   }, 10000);
 
+  // makes the T move on the screen every 1.5 seconds if not dead.
    setInterval(() => {
     if (!isDead) {
       animateCharacter();
@@ -228,7 +225,7 @@ setInterval(() => {
 }
 
 
-initializeGame();
+//initializeGame();
 
 
 
