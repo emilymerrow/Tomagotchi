@@ -2,7 +2,7 @@ body {
     background: rgb(15 19 22);
     color: white;
     padding: 2rem;
-    f font-family: Inter, sans-serif;
+    font-family: Inter, sans-serif;
   }
   
   #pixel-screen {
@@ -76,3 +76,25 @@ body {
     display: flex;
     justify-content: center;
   }
+
+  #character-name {
+    text-align: center;
+  }
+  
+  .info-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding-top: 16px;
+  }
+  
+  .metric {
+    display: flex;
+  }
+  
+  .metric .current-stat {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  

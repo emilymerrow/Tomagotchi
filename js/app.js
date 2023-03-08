@@ -38,8 +38,28 @@ let characterTemplate = {
       { x: 9, y: 9, color: '#fefcfc' },
       { x: 9, y: 11, color: '#fefcfc' },
       { x: 12, y: 11, color: '#fefcfc' },
-    ]
-  
+    ],
+    2: [
+        { x: 9, y: 9, color: '#fefcfc' },
+        { x: 10, y: 9, color: '#fefcfc' },
+        { x: 11, y: 9, color: '#fefcfc' },
+        { x: 12, y: 9, color: '#fefcfc' },
+        { x: 13, y: 10, color: '#fefcfc' },
+        { x: 14, y: 11, color: '#fefcfc' },
+        { x: 14, y: 12, color: '#fefcfc' },
+        { x: 13, y: 13, color: '#fefcfc' },
+        { x: 11, y: 14, color: '#fefcfc' },
+        { x: 12, y: 14, color: '#fefcfc' },
+        { x: 10, y: 14, color: '#fefcfc' },
+        { x: 9, y: 14, color: '#fefcfc' },
+        { x: 8, y: 13, color: '#fefcfc' },
+        { x: 7, y: 12, color: '#fefcfc' },
+        { x: 7, y: 11, color: '#fefcfc' },
+        { x: 8, y: 10, color: '#fefcfc' },
+        { x: 9, y: 9, color: '#fefcfc' },
+        { x: 9, y: 11, color: '#fefcfc' },
+        { x: 12, y: 11, color: '#fefcfc' },
+      ]
   }
   
   let config = {
@@ -55,20 +75,22 @@ let sleepiness = 1;
 let boredom = 1;
 let age = 0;
 let isDead = false;
+
 //set the size of the T pixel art
 document.getElementById('pixel-screen').style.width = `calc(${(0.825 * config.width)}rem + ${(config.height * 3)}px)`;
 document.getElementById('pixel-screen').style.height = `calc(${(0.825 * config.height)}rem + ${(config.width * 3)}px)`;
 
+//creates the grid of pixels to display the T pixel art
 for(let i = 0; i < config.width; ++i) {
     for(let j = 0; j < config.height; ++j) {
       let createEl = document.createElement('div');
       createEl.classList.add('pixel');
       createEl.setAttribute('data-x-coordinate', j);
       createEl.setAttribute('data-y-coordinate', i);
-      document.getElementById('pixel-screen').appendChild(createEl);
+      document.getElementById('pixel-screen').appendChild(createEl); //it appends the newly created div elem 
     }
   }
-  
+  //clears the pixel art display and start fresh
 const clearScreen = () => {
     document.querySelectorAll('.pixel').forEach(function(item) {
       item.setAttribute('data-color', null)
@@ -76,6 +98,9 @@ const clearScreen = () => {
     });
   }
 
+  //iterates through the characterTemplate array corresponding to the T's
+  // current age & sets the background color of the div element with the
+  // matching x and y coordinates
   const draw = (coefficient = 0) => {
     clearScreen();
     characterTemplate[age].forEach(function(i) {
@@ -86,7 +111,7 @@ const clearScreen = () => {
       }
     });
   }
-
+   // sets the background color of each pix to red when T is dead
   const drawDead = () => {
     clearScreen();
     characterTemplate[age].forEach(function(i) {
@@ -122,7 +147,7 @@ class Tomagotchi {  //T class with a property (name)
     document.getElementById("sleepiness-stat").innerHTML = `(${sleepiness})`; //.innerHTML property is used to update their content
     document.getElementById("boredom-stat").innerHTML = `(${boredom})`;
     if (hunger === 10 || sleepiness === 10 || boredom === 10) { //if any of the levels reached 10, isDead=true
-      isDead = true; //prevent further updates ont the T stats after it died
+    isDead = true; //prevent further updates ont the T stats after it died
       drawDead();
     }
   }
@@ -153,26 +178,40 @@ class Tomagotchi {  //T class with a property (name)
   const animateCharacter = () => {
     draw(Math.floor(Math.random() * 2)); //creates the illusion of T moving or
   }                                      //changing direction on the screen
-     //  This allows the user to interact with the Tamagotchi and help it stay healthy and happy.        
+     //  This allows the user to interact with the T and help it stay healthy and happy.        
   const initializeGame = () => {
     displayUpdatedStats();
     document.getElementById("btnHunger").addEventListener("click", decreaseHunger);
     document.getElementById("btnSleepiness").addEventListener("click", decreaseSleepiness);
     document.getElementById("btnBoredom").addEventListener("click", decreaseBoredom);
+// Increases stats
+setInterval(() => {
+    if (!isDead) {
+      hunger ++;
+      sleepiness ++;
+      boredom ++;
+      displayUpdatedStats();
+    }
+  }, statsIncreaseInterval);
 
-I HAVE TO FIGURE OUT HOW TO INCREASE THE STATS 
+  // Increases age
+  setInterval(() => {
+    if (!isDead) {
+      if (age < 1) {
+        age ++;
+      }
+      document.getElementById("character-age").innerHTML = `(Age:${age})`;
+    }
+   }, 10000);
 
-
-incrementAge() {
-    this.age += 1; //increases by 1
-    console.log(`${this.name} is now ${this.age} days old.`);
+   setInterval(() => {
+    if (!isDead) {
+      animateCharacter();
+    }
+  }, 1500);
 }
-if(pet.hunger >=10 || pet.sleepiness >= 10 || pet.boredom >= 10 { //checks if T's hunger, sleep, OR boredom >=10
-    document.getElementById("message").textContent = `${pet.name} has died!` // dead pet
-}
+initializeGame();
 
-let petName = prompt("Enter your Tomagotchi's name:");
-let pet = new Tomagotchi(petName);
 
 
 /* I defined a Tamagotchi class with constructor that set the initial values 
