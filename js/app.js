@@ -48,7 +48,7 @@ let characterTemplate = {
     color: 'white',
   }
 
-let character;sh 
+let character; 
 let statsIncreaseInterval = 5000;
 let hunger = 1;
 let sleepiness = 1;
@@ -59,6 +59,45 @@ let isDead = false;
 document.getElementById('pixel-screen').style.width = `calc(${(0.825 * config.width)}rem + ${(config.height * 3)}px)`;
 document.getElementById('pixel-screen').style.height = `calc(${(0.825 * config.height)}rem + ${(config.width * 3)}px)`;
 
+for(let i = 0; i < config.width; ++i) {
+    for(let j = 0; j < config.height; ++j) {
+      let createEl = document.createElement('div');
+      createEl.classList.add('pixel');
+      createEl.setAttribute('data-x-coordinate', j);
+      createEl.setAttribute('data-y-coordinate', i);
+      document.getElementById('pixel-screen').appendChild(createEl);
+    }
+  }
+  
+const clearScreen = () => {
+    document.querySelectorAll('.pixel').forEach(function(item) {
+      item.setAttribute('data-color', null)
+      item.style.background = '#333333';
+    });
+  }
+
+  const draw = (coefficient = 0) => {
+    clearScreen();
+    characterTemplate[age].forEach(function(i) {
+      let getPixel = document.querySelector(`.pixel[data-x-coordinate="${i.x + coefficient}"][data-y-coordinate="${i.y + coefficient}"]`);
+      if(getPixel !== null) {
+        getPixel.setAttribute('data-color', i.color);
+        getPixel.style.background = i.color;
+      }
+    });
+  }
+
+  const drawDead = () => {
+    clearScreen();
+    characterTemplate[age].forEach(function(i) {
+      let getPixel = document.querySelector(`.pixel[data-x-coordinate="${i.x}"][data-y-coordinate="${i.y}"]`);
+      if(getPixel !== null) {
+        getPixel.setAttribute('data-color', '#c52828');
+        getPixel.style.background = '#c52828';
+      }
+    });
+    }
+   draw();
 
 class Tomagotchi {  //T class with a property (name)
 
@@ -94,7 +133,7 @@ class Tomagotchi {  //T class with a property (name)
       displayUpdatedStats(); //calls the funct. to update the HTML content of the Tamagotchi's stats
     }                        //after the hunger level is decreased
 }                        
-  }
+  
   
   const decreaseSleepiness = () => {
     if (sleepiness >= 2) {
@@ -114,10 +153,14 @@ class Tomagotchi {  //T class with a property (name)
   const animateCharacter = () => {
     draw(Math.floor(Math.random() * 2)); //creates the illusion of T moving or
   }                                      //changing direction on the screen
-               
+     //  This allows the user to interact with the Tamagotchi and help it stay healthy and happy.        
+  const initializeGame = () => {
+    displayUpdatedStats();
+    document.getElementById("btnHunger").addEventListener("click", decreaseHunger);
+    document.getElementById("btnSleepiness").addEventListener("click", decreaseSleepiness);
+    document.getElementById("btnBoredom").addEventListener("click", decreaseBoredom);
 
-
-
+I HAVE TO FIGURE OUT HOW TO INCREASE THE STATS 
 
 
 incrementAge() {
@@ -125,7 +168,7 @@ incrementAge() {
     console.log(`${this.name} is now ${this.age} days old.`);
 }
 if(pet.hunger >=10 || pet.sleepiness >= 10 || pet.boredom >= 10 { //checks if T's hunger, sleep, OR boredom >=10
-    document.getElementById("message").textContent = `${pet.name} has died!` //logs dead pet
+    document.getElementById("message").textContent = `${pet.name} has died!` // dead pet
 }
 
 let petName = prompt("Enter your Tomagotchi's name:");

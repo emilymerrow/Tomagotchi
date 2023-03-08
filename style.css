@@ -43,3 +43,36 @@ body {
     justify-content: center;
     flex-direction: column;
   }
+  .info {
+    background: #fff;
+    height: 50px;
+    width: 320px;
+    background: #666666;
+  }
+  #buttons {
+    padding-top: 20px;
+    height: 80px;
+    width: 250px;
+  }
+  
+  button {
+    background-color: #333333;
+    border: none;
+    border-radius: 100px;
+    height: 40px;
+    width: 40px;
+    font-size: 1.5em;
+    margin: 10px 20px;
+    color: rgba(1, 1, 1, 0.5);
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px;
+    cursor: pointer;
+  }
+  button:active {
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px,
+  }
+  .character-details {
+    display: flex;
+    justify-content: center;
+  }
