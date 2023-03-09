@@ -127,7 +127,7 @@ body {
   }
   
   .modal-content {
-    background-color: #fefefe;
+    background-color: white;
     margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
@@ -155,5 +155,7 @@ body {
     text-align: center;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     text-decoration: underline;
-    font-size: 1.5em;
+    font-size: 1.7em;
+    background-color: lightpink;
+    padding: 10px
   }
