@@ -1,5 +1,3 @@
-console.log("JS TEST MAIN ");
-
 let characterTemplate = {
     0: [
       { x: 9, y: 9, color: '#fefcfc' },

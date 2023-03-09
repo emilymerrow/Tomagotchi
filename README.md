@@ -26,15 +26,28 @@ Every time it hits a new Age level, the pet will grow in pixels and also at Age 
 
 <img src="https://i.imgur.com/GYO6YuB.png">
 
+
 Your pet will need to be fed, put to bed, and played with to keep it alive. 
 Those values start at 1 and it represents your pet at it's optimal levels of happiness and contentment but the health of your pet declines as those values reach higher number and eventually die if any f the feed, sleep, or play reaches 10. To keep your pet healthy you will need to click the three buttons on the bottom and for every click it will decrease by 1 to avoid getting to level 10 where your pet will die.
 
 When the pet is dead, the pixeled immage will turn red.
 
+
 <img src="https://i.imgur.com/THihUJM.png">
 
 
 
+## List of Technologies Used
+
+JavaScript
+Cascading Style Sheets (CSS)
+HyperText Markup Language (HTML)
+
+
+## Next Steps
+
+With a lot more skill aquired and extra time at my disposal in the future, it would be nice to add a feature at the end of the game, when the pet died that would say "Your Pet has Died". 
+Also, add new cool hairstyles as the pet grows would be interesting in the future.
 
 
 
